@@ -1,9 +1,6 @@
 channels:
   - conda-forge
-  - pytorch
-  - nvidia
 dependencies:
-  - python=3.11
   - timm=0.9.12
   - transformers=4.32.1
   - pycocotools>=2.0.6
