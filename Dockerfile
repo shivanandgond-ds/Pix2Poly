@@ -31,7 +31,7 @@ RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
     mv bin/micromamba /usr/local/bin/micromamba
 
 # # Install dependencies directly into base
-RUN micromamba install -n base -y -f environment.yml --no-update-deps && \
+RUN micromamba install -n base -y -f environment.yml && \
     micromamba clean --all --yes
 
 # Copy the model code
