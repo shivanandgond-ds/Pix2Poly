@@ -20,8 +20,9 @@ COPY environment.yml .
 # Create conda environment
 # RUN conda env update -n base -f environment.yml && \
 #     conda clean -afy
-RUN conda install -n base -c conda-forge mamba -y && \
-    mamba env update -n base -f environment.yml && \
+# RUN conda install -n base -c conda-forge mamba -y
+
+RUN mamba env update -n base -f environment.yml && \
     conda clean -afy
 
 # Copy the model code
