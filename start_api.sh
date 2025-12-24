@@ -5,7 +5,7 @@ set -e
 
 # Activate conda environment
 source $(conda info --base)/etc/profile.d/conda.sh
-conda activate pix2poly
+conda activate base
 
 # Start the API server
 echo "Starting API server"
