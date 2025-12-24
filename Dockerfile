@@ -8,29 +8,21 @@ RUN apt-get update && apt-get install -y \
     curl \
     git \
     wget \
+    software-properties-common \
+    gdal-bin \
+    libgdal-dev \
+    libspatialindex-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /opt/program
 
-# Copy environment file
-COPY environment.yml .
+# Copy requirements.txt
+COPY requirements.txt .
 
-# Create conda environment
-# RUN conda env update -n base -f environment.yml && \
-#     conda clean -afy
-# RUN conda install -n base -c conda-forge mamba -y --no-update-deps
-
-# RUN mamba install -n base -y -f environment.yml --no-update-deps && \
-#     conda clean -afy
-    
-# Install micromamba
-RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
-    | tar -xvj bin/micromamba && \
-    mv bin/micromamba /usr/local/bin/micromamba
-
-# # Install dependencies directly into base
-RUN micromamba install -n base -y -f environment.yml
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
 
 # Copy the model code
 COPY . .
