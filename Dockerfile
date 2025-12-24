@@ -20,19 +20,19 @@ COPY environment.yml .
 # Create conda environment
 # RUN conda env update -n base -f environment.yml && \
 #     conda clean -afy
-RUN conda install -n base -c conda-forge mamba -y --no-update-deps
+# RUN conda install -n base -c conda-forge mamba -y --no-update-deps
 
-RUN mamba install -n base -y -f environment.yml --update-deps && \
-    conda clean -afy
+# RUN mamba install -n base -y -f environment.yml --no-update-deps && \
+#     conda clean -afy
     
 # Install micromamba
-# RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
-#     | tar -xvj bin/micromamba && \
-#     mv bin/micromamba /usr/local/bin/micromamba
+RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
+    | tar -xvj bin/micromamba && \
+    mv bin/micromamba /usr/local/bin/micromamba
 
 # # Install dependencies directly into base
-# RUN micromamba install -n base -y -f environment.yml && \
-#     micromamba clean --all --yes
+RUN micromamba install -n base -y -f environment.yml --no-update-deps && \
+    micromamba clean --all --yes
 
 # Copy the model code
 COPY . .
