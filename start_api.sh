@@ -3,10 +3,11 @@
 # Exit on error
 set -e
 
+# Initialize micromamba
+source /usr/local/bin/micromamba shell hook
 
-# Activate conda environment
-source $(conda info --base)/etc/profile.d/conda.sh
-conda activate base
+# Activate base
+micromamba activate base
 
 # Start the API server
 echo "Starting API server"
