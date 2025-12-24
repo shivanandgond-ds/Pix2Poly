@@ -18,11 +18,11 @@ WORKDIR /opt/program
 COPY environment.yml .
 
 # Create conda environment
-# RUN conda env create -f environment.yml && \
-#     conda clean -afy
-RUN conda install -n base -c conda-forge mamba -y && \
-    mamba env create -f environment.yml && \
+RUN conda env update -n base -f environment.yml && \
     conda clean -afy
+# RUN conda install -n base -c conda-forge mamba -y && \
+#     mamba env create -f environment.yml && \
+#     conda clean -afy
 
 # Copy the model code
 COPY . .
