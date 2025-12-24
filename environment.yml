@@ -7,7 +7,8 @@ dependencies:
   - torchmetrics=1.2.1
   - tensorboard=2.15.1
   - buildingregulariser>=0.2.2
-  - geopandas=1.1.1
+  - geopandas
+  - shapely
   - pip
   - pip:
     - torch==2.1.2
@@ -20,7 +21,6 @@ dependencies:
     - scikit-image==0.22.0
     - scikit-learn==1.3.2
     - scipy==1.11.4
-    - shapely==2.0.4
     - fastapi>=0.68.0
     - uvicorn>=0.15.0
     - python-multipart>=0.0.5
